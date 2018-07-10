@@ -30,7 +30,14 @@
         <br>
         <div class="row">
             <div class="col">
-                <textarea class="form-control"  rows="3" placeholder="Description (optional)"></textarea>
+                <textarea class="form-control" 
+                rows="3" 
+                placeholder="Description (optional)"
+                id="description"
+                name="description"
+                #projectDescription="ngModel"
+                [(ngModel)]="description"
+                ></textarea>
             </div>
         </div>
         <br>

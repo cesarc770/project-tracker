@@ -27,7 +27,27 @@ export class ClientService {
      return this.projects;
   }
 
+  getProject(id: string): Observable<Project> {
+    this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
+    this.project =  this.projectDoc.snapshotChanges().pipe(map(actions => {
+      if(actions.payload.exists === false) {
+        return null;
+      } else {
+        const data = actions.payload.data() as Project;
+        data.id = actions.payload.id;
+        return data;
+      }
+    }));
+    return this.project;
+  }
+
   newProject(project: Project) {
     this.projectsCollection.add(project);
+  }
+
+  updateProjectBasicInfo(project: Project) {
+    console.log("ID ",project.id)
+    this.projectDoc = this.afs.doc(`projects/${project.id}`);
+    this.projectDoc.update(project);
   }
  }

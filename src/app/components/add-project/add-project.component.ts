@@ -29,10 +29,13 @@ export class AddProjectComponent implements OnInit {
     if(!valid) {
       //show error
     } else {
+      if(value.description == undefined) {
+        value.description = "";
+      }
       // add new project
       this.clientService.newProject(value);
       //redirect
-      this.router.navigate(['/']);
+      this.router.navigate(['/projects']);
     }
   }
 
