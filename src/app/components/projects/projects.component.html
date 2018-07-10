@@ -4,9 +4,9 @@
     <hr><br>
     <div>
       <div *ngIf="projects?.length > 0; else noProjects">
-          <div>
-              <div class="btn" routerLink="/" *ngFor="let project of projects">
-                  <div class="card text-center">
+          <div class="row" >
+              <div class="col-sm-4" *ngFor="let project of projects" style="min-width:230px; margin-bottom:5px">
+                  <div class="btn card text-center" routerLink="/">
                       <div class="card-body">
                           <h5 class="card-title">{{project.projectName}}</h5>
                           <p class="card-text"></p>
