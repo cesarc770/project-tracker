@@ -3,25 +3,17 @@
     <p>View all your existing projects. Click on each of them to view details and access the tracker for that particular project.</p>
     <hr><br>
     <div>
-      <div *ngIf="projects.length > 0; else noProjects">
-          <ul>
-              <li class="btn" routerLink="/add-project">
+      <div *ngIf="projects?.length > 0; else noProjects">
+          <div>
+              <div class="btn" routerLink="/" *ngFor="let project of projects">
                   <div class="card text-center">
                       <div class="card-body">
-                          <h5 class="card-title">Add Project</h5>
-                          <p class="card-text"><i class="fa fa-plus-circle"></i></p>
+                          <h5 class="card-title">{{project.projectName}}</h5>
+                          <p class="card-text"></p>
                       </div>
                   </div>
-              </li>
-              <li class="btn" routerLink="/projects">
-                  <div class="card text-center">
-                      <div class="card-body">
-                          <h5 class="card-title">My Projects</h5>
-                          <p class="card-text"><i class="fa fa-briefcase"></i></p>
-                      </div>
-                  </div>
-              </li>
-          </ul>
+                </div>
+              </div>
         </div>
       <ng-template #noProjects>
         <h5>You have no projects yet</h5>

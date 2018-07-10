@@ -15,8 +15,7 @@ export class ClientService {
   project: Observable<Project>;
 
   constructor(private afs: AngularFirestore) {
-    this.projectsCollection = this.afs.collection('projects', 
-  ref => ref.orderBy('lastName', 'asc'));
+    this.projectsCollection = this.afs.collection('projects');
    }
 
    getProjects(): Observable<Project[]> {
@@ -25,7 +24,10 @@ export class ClientService {
       const id = a.payload.doc.id;
       return { id, ...data };
     })))
-    
      return this.projects;
+  }
+
+  newProject(project: Project) {
+    this.projectsCollection.add(project);
   }
  }

@@ -3,13 +3,28 @@
   <p>To start tracking your project complete the form below and click submit at the end of the form. This project will be added to your queue. You can access all your projects from the MyProjects link located on the sidebar or on the dashboard.</p>
   <hr><br>
   <div class="container">
-      <form>
+      <form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
         <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Project Owner">
+              <input type="text"
+               class="form-control" 
+               placeholder="* Project Owner "
+               name="projectOwner"
+               #ProjectOwner="ngModel"
+               [ngClass]="{'is-invalid':ProjectOwner.errors && ProjectOwner.touched}"
+               [(ngModel)]="projectOwner"
+               required>
             </div>
           <div class="col">
-            <input type="text" class="form-control" placeholder="Project name">
+            <input type="text" 
+            class="form-control" 
+            placeholder="* Project name"
+            id="projectName"
+            name="projectName"
+            #ProjectName="ngModel"
+            [ngClass]="{'is-invalid':ProjectName.errors && ProjectName.touched}"
+            [(ngModel)]="projectName"
+            required>
           </div>
         </div>
         <br>
@@ -21,8 +36,9 @@
         <br>
         <div class="row">
           <div class="col text-center">
-              <button type="button" class="btn btn-success">Create Project</button>
+              <button type="submit" value="Submit" class="btn btn-success">Create Project</button>
           </div>
+          <div class="right">* Required</div>
         </div>
       </form>
   </div>
