@@ -41,6 +41,15 @@ export class ProjectDetailsComponent implements OnInit {
     this.isEditing = false;
   }
 
+  deleteProject(){
+    if(confirm('Are you sure?')){
+      this.clientService.delete(this.project.id);
+      this.router.navigate(['/projects']);
+    }
+    
+    
+  }
+
   completeEdit({value, valid}: {value: Project, valid: boolean}){
     if(!valid) {
       //show error

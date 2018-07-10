@@ -6,7 +6,7 @@
       <div *ngIf="projects?.length > 0; else noProjects">
           <div class="row" >
             <div class="col-sm-6" *ngFor="let project of projects" style="min-width:230px; margin-bottom:5px">
-                <div class="btn card" routerLink='/projects/{{project.id}}'>
+                <div class="card" routerLink='/projects/{{project.id}}' style="cursor: pointer">
                     <div class="card-body" style="min-height: 120px;">
                         <h6 class="card-title text-left">{{project.projectOwner}} / {{project.projectName}}</h6>
                         <p class="card-text text-center">{{project.description}}</p>

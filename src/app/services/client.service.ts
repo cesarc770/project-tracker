@@ -50,4 +50,9 @@ export class ClientService {
     this.projectDoc = this.afs.doc(`projects/${project.id}`);
     this.projectDoc.update(project);
   }
+
+  delete(id: string){
+    this.projectDoc = this.afs.doc(`projects/${id}`);
+    this.projectDoc.delete();
+  }
  }
