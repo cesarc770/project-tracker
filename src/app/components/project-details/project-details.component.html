@@ -56,6 +56,16 @@
     </ng-template>
     <hr><br>
 
+    <ul>
+        <li class="btn" routerLink="/projects/{{id}}/tasks">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Tasks</h5>
+                    <p class="card-text"><i class="fa fa-tasks"></i></p>
+                </div>
+            </div>
+        </li>
+    </ul>
     <div class="alert alert-danger" role="alert">
       <h5 class="alert-heading"> <i class="fa fa-trash"></i> Delete Project</h5>
           <p> Deleting this project will delete it permanently from the database. <button class="btn btn-danger float-right" (click)="deleteProject()" >Delete</button>

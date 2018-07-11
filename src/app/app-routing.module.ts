@@ -9,6 +9,8 @@ import { AddProjectComponent } from
 './components/add-project/add-project.component';
 import { ProjectsComponent } from 
 './components/projects/projects.component';
+import { TasksComponent } from 
+'./components/tasks/tasks.component';
 import { ProjectDetailsComponent } from 
 './components/project-details/project-details.component';
 import { NotFoundComponent } from 
@@ -20,6 +22,7 @@ const routes: Routes = [
   {path: 'add-project', component: AddProjectComponent},
   {path: 'projects', component: ProjectsComponent},
   {path: 'projects/:id', component: ProjectDetailsComponent},
+  {path: 'projects/:id/tasks', component: TasksComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

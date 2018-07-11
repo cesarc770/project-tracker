@@ -17,6 +17,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AddProjectComponent } from './components/add-project/add-project.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
     NotFoundComponent,
     AddProjectComponent,
     ProjectsComponent,
-    ProjectDetailsComponent
+    ProjectDetailsComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
