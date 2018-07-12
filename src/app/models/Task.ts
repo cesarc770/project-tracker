@@ -2,5 +2,5 @@ export interface Task {
     id?: string;
     description?: string,
     points?: number,
-    projectOwner?: string
+    project_id: string
 }
