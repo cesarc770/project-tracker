@@ -4,9 +4,12 @@
         <h4><i class="fa fa-briefcase"></i> {{project.projectOwner}} / {{project.projectName}}</h4>
         <p>{{project.description}}</p>
 
-        <hr><br>
-
-        <div class="container">
+        <hr> 
+        <div>
+          <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addTask"><i class="fa fa-plus"></i> Add</button>
+        </div>
+        
+        <div class="container" style="margin:10px">
           <div class="row">
             <div class="col-sm">
               <div class="card">
@@ -47,5 +50,7 @@
             </div>
           </div>
         </div>
+
+        <app-add-task></app-add-task>
 </div>
 
