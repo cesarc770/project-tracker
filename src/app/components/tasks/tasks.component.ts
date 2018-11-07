@@ -12,6 +12,7 @@ import { Project } from '../../models/Project';
 export class TasksComponent implements OnInit {
   id: string;
   project: Project;
+  tasks: any[];
 
   constructor(
     private clientService: ClientService,
@@ -25,7 +26,10 @@ export class TasksComponent implements OnInit {
 
      this.clientService.getProject(this.id).subscribe(project => {
        this.project = project;
+       this.tasks = project.tasks;
      })
   }
+
+  
 
 }

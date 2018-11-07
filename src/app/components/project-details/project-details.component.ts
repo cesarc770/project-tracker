@@ -29,6 +29,7 @@ export class ProjectDetailsComponent implements OnInit {
 
     this.clientService.getProject(this.id).subscribe(project => {
       this.project = project;
+      console.log(this.project);
     })
   }
 
