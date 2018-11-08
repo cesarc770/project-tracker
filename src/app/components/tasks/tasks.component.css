@@ -1,3 +1,7 @@
 .pointer {
     cursor: pointer;
 }
+
+li:hover {
+    background-color: #C0C0C0;
+}
