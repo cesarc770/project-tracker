@@ -5,3 +5,8 @@
 li:hover {
     background-color: #C0C0C0;
 }
+
+.list-group {
+    overflow: scroll;
+    height: 300px;
+}

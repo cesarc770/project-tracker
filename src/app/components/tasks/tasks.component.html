@@ -19,7 +19,7 @@
 
                 <div class="card-body">
                   <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center pointer" 
+                    <li class="list-group-item align-items-center pointer" 
                     *ngFor="let task of todo"
                     routerLink="/projects/{{project.id}}/tasks/edit/{{task.id}}">
                       {{task.name}}
@@ -36,7 +36,7 @@
                 </h5>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center pointer" 
+                        <li class="list-group-item align-items-center pointer" 
                         *ngFor="let task of inProgress"
                         routerLink="/projects/{{project.id}}/tasks/edit/{{task.id}}">
                           {{task.name}}
@@ -53,7 +53,7 @@
                 </h5>
                 <div class="card-body">
                     <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center pointer" 
+                        <li class="list-group-item align-items-center pointer" 
                         *ngFor="let task of complete"
                         routerLink="/projects/{{project.id}}/tasks/edit/{{task.id}}">
                           {{task.name}}
