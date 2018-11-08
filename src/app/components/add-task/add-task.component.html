@@ -1,11 +1,12 @@
 <div class="modal fade" id="addTask" tabindex="-1" role="dialog" aria-labelledby="addTaskLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+        <form #taskForm="ngForm">
       <div class="modal-header">
         <h5 class="modal-title" id="addTaskLabel">NEW TASK</h5>
         <div class="text-right">
             <label>Points: </label>
-            <select class="form-control" id="status" style="width: 60px;">
+            <select class="form-control" id="points" name="points" [(ngModel)]="points" style="width: 60px;">
                 <option>-</option>
                 <option>1</option>
                 <option>2</option>
@@ -22,7 +23,6 @@
       </div>
       <div class="modal-body">
         <div class="container">
-          <form #taskForm="ngForm" (ngSubmit)="onSubmit(taskForm)">
             <div class="row">
                 <div class="col">
                   <input type="text"
@@ -34,7 +34,7 @@
                    >
                 </div>
               <div class="col">
-                <select class="form-control" id="status">
+                <select class="form-control" name="status" [(ngModel)]="status" id="status">
                   <option>todo</option>
                   <option>In Progress</option>
                   <option>Complete</option>
@@ -54,13 +54,13 @@
                     ></textarea>
                 </div>
            </div>
-          </form>
       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"> <i class="fa fa-times"></i> Cancel</button>
-        <button type="button" class="btn btn-info"><i class="fa fa-save"></i> Save changes</button>
+        <button type="button" class="btn btn-info" (click)="onSubmit(taskForm)"><i class="fa fa-save"></i> Save changes</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
