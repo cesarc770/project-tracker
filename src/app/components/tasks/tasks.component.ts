@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Project } from '../../models/Project';
 import { forEach } from '@angular/router/src/utils/collection';
+import { Task } from '../../models/Task';
 
 @Component({
   selector: 'app-tasks',
@@ -13,7 +14,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class TasksComponent implements OnInit {
   id: string;
   project: Project;
-  tasks: any[];
+  tasks: Task[];
   todo: any[] = [];
   inProgress: any[] = [];
   complete: any[] = [];
@@ -30,25 +31,10 @@ export class TasksComponent implements OnInit {
 
      this.clientService.getProject(this.id).subscribe(project => {
        this.project = project;
-       this.determineTaskStatus(project.tasks);
      })
+     this.clientService.getTodos(this.id).subscribe(tasks => {
+      this.todo = tasks;
+    })
   }
-
-  determineTaskStatus(tasks) {
-    for(var i = 0; i < tasks.length; i++){
-      let task = tasks[i];
-
-      if(task.status == 'todo') {
-        this.todo.push(task);
-      } else if (task.status == 'In Progress') {
-        this.inProgress.push(task);
-      } else {
-        this.complete.push(task);
-      }
-    }
-
-  }
-
-  
 
 }
