@@ -32,8 +32,12 @@ export class AddTaskComponent implements OnInit {
       description: data.value.description,
       points: data.value.points
     }
-
-    this.project.tasks.push(newTask);
+    if(this.project.tasks){
+      this.project.tasks.push(newTask);
+    } else {
+      this.project.tasks = [newTask];
+    }
+    
     this.clientService.updateProjectBasicInfo(this.project);
   }
 
