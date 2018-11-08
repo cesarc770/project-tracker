@@ -16,6 +16,7 @@ import { ProjectDetailsComponent } from
 import { NotFoundComponent } from 
 './components/not-found/not-found.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'projects/:id', component: ProjectDetailsComponent},
   {path: 'projects/:id/tasks', component: TasksComponent},
   {path: 'projects/:id/tasks/add', component: AddTaskComponent},
+  {path: 'projects/:id/tasks/edit/:taskid', component: EditTaskComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
