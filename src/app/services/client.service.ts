@@ -16,7 +16,7 @@ export class ClientService {
   project: Observable<Project>;
   tasks: Observable<Task[]>;
   todos: Observable<Task[]>;
-  inProgess: Observable<Task[]>;
+  inProgress: Observable<Task[]>;
   complete: Observable<Task[]>;
 
   constructor(private afs: AngularFirestore) {
@@ -78,6 +78,46 @@ export class ClientService {
       }
     }));
     return this.todos;
+  }
+
+  getInProgress(id: string): Observable<Task[]> {
+    this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
+    this.inProgress =  this.projectDoc.snapshotChanges().pipe(map(actions => {
+      if(actions.payload.exists === false) {
+        return null;
+      } else {
+        const inProgress = [];
+        const data = actions.payload.data() as Project;
+        data.id = actions.payload.id;
+        for(var i = 0; i < data.tasks.length; i++){
+          if(data.tasks[i].status == 'In Progress'){
+            inProgress.push(data.tasks[i]);
+          }
+        }
+        return inProgress;
+      }
+    }));
+    return this.inProgress;
+  }
+
+  getComplete(id: string): Observable<Task[]> {
+    this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
+    this.complete =  this.projectDoc.snapshotChanges().pipe(map(actions => {
+      if(actions.payload.exists === false) {
+        return null;
+      } else {
+        const complete = [];
+        const data = actions.payload.data() as Project;
+        data.id = actions.payload.id;
+        for(var i = 0; i < data.tasks.length; i++){
+          if(data.tasks[i].status == 'Complete'){
+            complete.push(data.tasks[i]);
+          }
+        }
+        return complete;
+      }
+    }));
+    return this.complete;
   }
 
   newProject(project: Project) {

@@ -35,6 +35,12 @@ export class TasksComponent implements OnInit {
      this.clientService.getTodos(this.id).subscribe(tasks => {
       this.todo = tasks;
     })
+    this.clientService.getInProgress(this.id).subscribe(tasks => {
+      this.inProgress = tasks;
+    })
+    this.clientService.getComplete(this.id).subscribe(tasks => {
+      this.complete= tasks;
+    })
   }
 
 }
