@@ -26,7 +26,9 @@ export class AddTaskComponent implements OnInit {
   }
 
   onSubmit(data) {
+    let r = Math.random().toString(36).substring(2,13);
     var newTask = {
+      id: r,
       name: data.value.name,
       status: data.value.status,
       description: data.value.description,
