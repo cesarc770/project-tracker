@@ -18,6 +18,9 @@ export class ClientService {
   todos: Observable<Task[]>;
   inProgress: Observable<Task[]>;
   complete: Observable<Task[]>;
+  todoPoints: number = 0;
+  inProgressPoints: number = 0;
+  completePoints: number = 0;
 
   constructor(private afs: AngularFirestore) {
     this.projectsCollection = this.afs.collection('projects');
@@ -61,6 +64,7 @@ export class ClientService {
   }
 
   getTodos(id: string): Observable<Task[]> {
+    var points: number = 0;
     this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
     this.todos =  this.projectDoc.snapshotChanges().pipe(map(actions => {
       if(actions.payload.exists === false) {
@@ -72,8 +76,10 @@ export class ClientService {
         for(var i = 0; i < data.tasks.length; i++){
           if(data.tasks[i].status == 'todo'){
             todo.push(data.tasks[i]);
+            points += Number(data.tasks[i].points);
           }
         }
+        this.todoPoints = points;
         return todo;
       }
     }));
@@ -81,6 +87,7 @@ export class ClientService {
   }
 
   getInProgress(id: string): Observable<Task[]> {
+    var points: number = 0;
     this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
     this.inProgress =  this.projectDoc.snapshotChanges().pipe(map(actions => {
       if(actions.payload.exists === false) {
@@ -92,8 +99,10 @@ export class ClientService {
         for(var i = 0; i < data.tasks.length; i++){
           if(data.tasks[i].status == 'In Progress'){
             inProgress.push(data.tasks[i]);
+            points += Number(data.tasks[i].points);
           }
         }
+        this.inProgressPoints = points;
         return inProgress;
       }
     }));
@@ -101,6 +110,7 @@ export class ClientService {
   }
 
   getComplete(id: string): Observable<Task[]> {
+    var points:number = 0;
     this.projectDoc = this.afs.doc<Project>(`projects/${id}`);
     this.complete =  this.projectDoc.snapshotChanges().pipe(map(actions => {
       if(actions.payload.exists === false) {
@@ -112,8 +122,10 @@ export class ClientService {
         for(var i = 0; i < data.tasks.length; i++){
           if(data.tasks[i].status == 'Complete'){
             complete.push(data.tasks[i]);
+            points += Number(data.tasks[i].points);
           }
         }
+        this.completePoints = points;
         return complete;
       }
     }));
