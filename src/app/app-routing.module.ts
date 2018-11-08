@@ -17,16 +17,35 @@ import { NotFoundComponent } from
 './components/not-found/not-found.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { ProjectsContainerComponent } from './components/projects-container/projects-container.component';
+import { AppContainerComponent } from './components/app-container/app-container.component';
+import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  {path: '', component: DashboardComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'add-project', component: AddProjectComponent},
-  {path: 'projects', component: ProjectsComponent},
-  {path: 'projects/:id', component: ProjectDetailsComponent},
-  {path: 'projects/:id/tasks', component: TasksComponent},
-  {path: 'projects/:id/tasks/add', component: AddTaskComponent},
-  {path: 'projects/:id/tasks/edit/:taskid', component: EditTaskComponent},
+  {path: '', 
+    component: AppContainerComponent,
+    children: [{
+      path: '',
+      component: MainComponent,
+      children: [
+        {path: '', component: DashboardComponent},
+        {path: 'settings', component: SettingsComponent},
+        {path: 'add-project', component: AddProjectComponent},
+        {path: 'projects', 
+        component: ProjectsContainerComponent,
+        children: [
+          {path:'', component: ProjectsComponent},
+          {path: ':id', component: ProjectDetailsComponent},
+          {path: ':id/tasks', component: TasksComponent},
+          {path: ':id/tasks/add', component: AddTaskComponent},
+          {path: ':id/tasks/edit/:taskid', component: EditTaskComponent}
+        
+        ]}
+      ]
+    }]
+  },
+  {path: 'login', component: LoginComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

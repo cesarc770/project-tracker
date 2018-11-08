@@ -20,6 +20,10 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
 import { TasksComponent } from './components/tasks/tasks.component';
 import { AddTaskComponent } from './components/add-task/add-task.component';
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
+import { ProjectsContainerComponent } from './components/projects-container/projects-container.component';
+import { AppContainerComponent } from './components/app-container/app-container.component';
+import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { EditTaskComponent } from './components/edit-task/edit-task.component';
     ProjectDetailsComponent,
     TasksComponent,
     AddTaskComponent,
-    EditTaskComponent
+    EditTaskComponent,
+    ProjectsContainerComponent,
+    AppContainerComponent,
+    MainComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
