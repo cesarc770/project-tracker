@@ -1,12 +1,13 @@
+<div class="container">
 <div>
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-          <form #taskForm="ngForm">
+          <form #taskForm="ngForm" (submit)="onSubmit(taskForm)">
         <div class="modal-header">
-          <h5 class="modal-title" id="addTaskLabel"></h5>
+          <h5 class="modal-title" id="addTaskLabel">{{task.name}}</h5>
           <div class="text-right">
               <label>Points: </label>
-              <select class="form-control" id="points" name="points" [(ngModel)]="points" style="width: 60px;">
+              <select class="form-control" id="points" name="points" [(ngModel)]="points" style="width: 60px;" value={{task.points}}>
                   <option>-</option>
                   <option>1</option>
                   <option>2</option>
@@ -27,10 +28,12 @@
                      name="name"
                      #taskName="ngModel"
                      [(ngModel)]="name"
+                     autocomplete="off"
+                     value={{task.name}}
                      >
                   </div>
                 <div class="col">
-                  <select class="form-control" name="status" [(ngModel)]="status" id="status">
+                  <select class="form-control" name="status" [(ngModel)]="status" id="status" value={{task.status}}>
                     <option>todo</option>
                     <option>In Progress</option>
                     <option>Complete</option>
@@ -47,6 +50,7 @@
                       name="description"
                       #projectDescription="ngModel"
                       [(ngModel)]="description"
+                      value={{task.description}}
                       ></textarea>
                   </div>
              </div>
@@ -54,9 +58,17 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" routerLink="/projects/{{project.id}}/tasks"> <i class="fa fa-times"></i> Cancel</button>
-          <button type="button" class="btn btn-info" (click)="onSubmit(taskForm)"><i class="fa fa-save"></i> Save changes</button>
+          <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> Save changes</button>
         </div>
       </form>
       </div>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" role="alert">
+      <h5 class="alert-heading"> <i class="fa fa-trash"></i> Delete Task</h5>
+          <p> Deleting this Task will delete it permanently from the database. <button class="btn btn-danger float-right" (click)="onDelete()" >Delete</button>
+          </p>
+          
     </div>
   </div>
