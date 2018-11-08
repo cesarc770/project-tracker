@@ -125,7 +125,6 @@ export class ClientService {
   }
 
   updateProjectBasicInfo(project: Project) {
-    console.log("ID ",project.id)
     this.projectDoc = this.afs.doc(`projects/${project.id}`);
     this.projectDoc.update(project);
   }

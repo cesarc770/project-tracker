@@ -15,6 +15,7 @@ import { ProjectDetailsComponent } from
 './components/project-details/project-details.component';
 import { NotFoundComponent } from 
 './components/not-found/not-found.component';
+import { AddTaskComponent } from './components/add-task/add-task.component';
 
 const routes: Routes = [
   {path: '', component: DashboardComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'projects', component: ProjectsComponent},
   {path: 'projects/:id', component: ProjectDetailsComponent},
   {path: 'projects/:id/tasks', component: TasksComponent},
+  {path: 'projects/:id/tasks/add', component: AddTaskComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

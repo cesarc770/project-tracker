@@ -6,7 +6,7 @@
 
         <hr> 
         <div>
-          <button class="btn btn-success" type="button" data-toggle="modal" data-target="#addTask"><i class="fa fa-plus"></i> Add</button>
+          <button class="btn btn-success" type="button" routerLink="/projects/{{project.id}}/tasks/add" ><i class="fa fa-plus"></i> Add</button>
         </div>
         
         <div class="container" style="margin:10px">
@@ -52,7 +52,5 @@
             </div>
           </div>
         </div>
-
-        <app-add-task></app-add-task>
 </div>
 

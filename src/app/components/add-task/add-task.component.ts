@@ -39,6 +39,9 @@ export class AddTaskComponent implements OnInit {
     }
     
     this.clientService.updateProjectBasicInfo(this.project);
+    
+    //redirect
+    this.router.navigate([`/projects/${this.project.id}/tasks`]);
   }
 
 }
