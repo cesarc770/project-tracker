@@ -3,6 +3,7 @@ import { ClientService } from '../../services/client.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Project } from '../../models/Project';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-tasks',
@@ -13,6 +14,9 @@ export class TasksComponent implements OnInit {
   id: string;
   project: Project;
   tasks: any[];
+  todo: any[] = [];
+  inProgress: any[] = [];
+  complete: any[] = [];
 
   constructor(
     private clientService: ClientService,
@@ -26,8 +30,23 @@ export class TasksComponent implements OnInit {
 
      this.clientService.getProject(this.id).subscribe(project => {
        this.project = project;
-       this.tasks = project.tasks;
+       this.determineTaskStatus(project.tasks);
      })
+  }
+
+  determineTaskStatus(tasks) {
+    for(var i = 0; i < tasks.length; i++){
+      let task = tasks[i];
+
+      if(task.status == 'todo') {
+        this.todo.push(task);
+      } else if (task.status == 'In Progress') {
+        this.inProgress.push(task);
+      } else {
+        this.complete.push(task);
+      }
+    }
+
   }
 
   

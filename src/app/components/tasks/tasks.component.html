@@ -16,7 +16,7 @@
                 <h5 class="card-header">Todo</h5>
                 <div class="card-body">
                   <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let task of tasks">
+                    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let task of todo">
                       {{task.name}}
                       <span class="badge badge-primary badge-pill">{{task.points}}</span>
                     </li>
@@ -28,7 +28,12 @@
               <div class="card">
                 <h5 class="card-header">In Progress</h5>
                 <div class="card-body">
-                  
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let task of inProgress">
+                          {{task.name}}
+                          <span class="badge badge-primary badge-pill">{{task.points}}</span>
+                        </li>
+                      </ul>
                 </div>
               </div>
             </div>
@@ -36,7 +41,12 @@
               <div class="card">
                 <h5 class="card-header">Complete</h5>
                 <div class="card-body">
-                  
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let task of complete">
+                          {{task.name}}
+                          <span class="badge badge-primary badge-pill">{{task.points}}</span>
+                        </li>
+                      </ul>
                 </div>
               </div>
             </div>
