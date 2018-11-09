@@ -47,8 +47,6 @@ const routes: Routes = [
         ]}
       ]
     }]
-    // ,
-    // canActivate:[AuthGuardService]
   },
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
