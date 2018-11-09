@@ -21,6 +21,8 @@ import { ProjectsContainerComponent } from './components/projects-container/proj
 import { AppContainerComponent } from './components/app-container/app-container.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {path: '', 
@@ -28,6 +30,7 @@ const routes: Routes = [
     children: [{
       path: '',
       component: MainComponent,
+      canActivate: [AuthGuardService],
       children: [
         {path: '', component: DashboardComponent},
         {path: 'settings', component: SettingsComponent},
@@ -44,8 +47,11 @@ const routes: Routes = [
         ]}
       ]
     }]
+    // ,
+    // canActivate:[AuthGuardService]
   },
   {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
   {path: '**', component: NotFoundComponent}
 ];
 

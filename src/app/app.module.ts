@@ -24,6 +24,7 @@ import { ProjectsContainerComponent } from './components/projects-container/proj
 import { AppContainerComponent } from './components/app-container/app-container.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { LoginComponent } from './components/login/login.component';
     ProjectsContainerComponent,
     AppContainerComponent,
     MainComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
