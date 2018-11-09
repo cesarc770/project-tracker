@@ -2,3 +2,20 @@
     width:70%;
     margin:auto;
 }
+
+.card {
+    width: 500px;
+    margin:auto;
+}
+
+.card-body {
+    padding:80px;
+}
+
+.btn-info {
+    width: 100%;
+}
+
+.text-info {
+   padding:30px;
+}

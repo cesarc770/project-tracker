@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <a routerLink="/projects" class="float-right"><i class="fa fa-arrow-circle-left"></i> Back to Projects</a>
+    <a routerLink="/projects" class="float-right text-dark"><i class="fa fa-arrow-circle-left"></i> Back to Projects</a>
     <div *ngIf="!isEditing; else editMode">
         <h4><i class="fa fa-briefcase"></i> {{project.projectOwner}} / {{project.projectName}} <span><i class="btn fa fa-edit" (click)="edit()"></i></span></h4>
         <p>{{project.description}}</p>
@@ -46,7 +46,7 @@
             <br>
             <div class="row">
               <div class="col text-center">
-                  <button type="submit" class="btn btn-success" [disabled]="isDisabled">Done</button>
+                  <button type="submit" class="btn btn-info" [disabled]="isDisabled">Done</button>
               </div>
               <div class="col text-center">
                   <button (click)="cancelEdit()" class="btn btn-danger">Cancel</button>
