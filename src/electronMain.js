@@ -10,7 +10,8 @@ function isDev() {
 function createWindow() {
     win = new BrowserWindow({
         width: 1200,
-        height: 800
+        height: 800,
+        icon: path.join(__dirname,'assets/favicon.png' )
     })
     win.loadURL(url.format({
         pathname: path.join(__dirname, '../dist/project-tracker/index.html'),
