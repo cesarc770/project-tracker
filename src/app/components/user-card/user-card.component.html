@@ -1,0 +1,12 @@
+<div class="card" style="width:200px">
+    <div class="card-header text-center">
+        <img src="{{this.userInfo.userPhoto}}" class="mr-3 mt-3 rounded-circle bg-light" style="width:30px;">
+        <h6>{{this.userInfo.userName}}</h6>
+    </div>
+    <div class="card-body text-center">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" routerLink="/settings">Settings</li>
+            <li class="list-group-item" (click)="onLogout()">Logout</li>
+          </ul>
+    </div>
+  </div>

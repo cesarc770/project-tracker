@@ -1,6 +1,10 @@
 <nav class="navbar navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Project Tracker</a>
   <ul class="nav navbar-nav navbar-right">
-      <li class="btn btn-link text-light" (click)="onLogout()" *ngIf="authService.user | async">Logout</li>
+      <div class="dropdown">
+          <button type="button" class="btn btn-link" (click)="openMenu()">
+              <img src="{{this.userInfo.userPhoto}}" alt="John Doe" class="mr-3 mt-3 rounded-circle bg-light" style="width:30px;">
+          </button>
+        </div>
   </ul>
 </nav>

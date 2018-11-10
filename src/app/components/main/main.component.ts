@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+  isOpen:boolean = false;
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onOpen(value) {
+    this.isOpen = !this.isOpen;
   }
 
 }

@@ -1,11 +1,13 @@
-<app-navbar></app-navbar>
+<app-navbar (open)="onOpen($event)" ></app-navbar>
 <div class="container-fluid">
     <div class="row">
       <nav class="col-md-3 d-none d-md-block bg-light sidebar" style="width:25%; height: 100vh; min-height:550px;">
         <app-sidebar></app-sidebar>
       </nav>
       <main style="width:75%;" class="main container">
+
         <router-outlet></router-outlet>
+        <app-user-card [hidden]="!isOpen"></app-user-card>
       </main>
     </div>
 </div>

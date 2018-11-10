@@ -1,0 +1,10 @@
+.card {
+    z-index: 1000;
+position: absolute;
+right: 7px;
+top:80px;
+}
+
+.list-group-item:hover {
+    cursor: pointer;
+}
