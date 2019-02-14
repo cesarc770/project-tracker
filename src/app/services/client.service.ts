@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Project } from '../models/Project';
 import { Task } from '../models/Task';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,15 +23,22 @@ export class ClientService {
   inProgressPoints: number = 0;
   completePoints: number = 0;
 
-  constructor(private afs: AngularFirestore) {
+  user;
+
+  constructor(private afs: AngularFirestore, private auth:AuthService) {
     this.projectsCollection = this.afs.collection('projects');
+    this.user = this.auth.getCurrentUserInfo().userId;
    }
 
    getProjects(): Observable<Project[]> {
     this.projects = this.projectsCollection.snapshotChanges().pipe(map(actions => actions.map(a => {
       const data = a.payload.doc.data() as Project;
       const id = a.payload.doc.id;
-      return { id, ...data };
+      for(let i = 0; i < data.viewers.length; i++){
+        if(data.viewers[i] == this.auth.getCurrentUserInfo().userId) {
+          return{ id, ...data };
+        }
+      }   
     })))
      return this.projects;
   }

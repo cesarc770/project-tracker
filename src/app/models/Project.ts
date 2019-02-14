@@ -5,5 +5,6 @@ export interface Project {
     description?: string,
     projectName?: string,
     projectOwner?: string,
-    tasks?: Task[]
+    tasks?: Task[],
+    viewers?: any[]
 }

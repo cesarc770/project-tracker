@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Project } from '../../models/Project';
 import { ClientService } from '../../services/client.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-project',
@@ -12,14 +13,16 @@ export class AddProjectComponent implements OnInit {
   project: Project = {
     projectName: '',
     projectOwner: '',
-    description: ''
+    description: '',
+    viewers: []
   }
 
   @ViewChild('projectForm') form: any;
 
   constructor(
     private clientService: ClientService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -32,6 +35,7 @@ export class AddProjectComponent implements OnInit {
       if(value.description == undefined) {
         value.description = "";
       }
+      value.viewers = [this.auth.getCurrentUserInfo().userId];
       // add new project
       this.clientService.newProject(value);
       //redirect

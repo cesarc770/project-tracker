@@ -60,8 +60,9 @@ export class AuthService {
   getCurrentUserInfo () {
     const userName = this.firebaseAuth.auth.currentUser.displayName;
     const userPhoto = this.firebaseAuth.auth.currentUser.photoURL;
+    const userId = this.firebaseAuth.auth.currentUser.uid
 
-    return {userName, userPhoto};
+    return {userId, userName, userPhoto};
     
   }
 
